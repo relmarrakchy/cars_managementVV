@@ -216,13 +216,31 @@ a {
 .filter{
     width: 80%;
     height: 180px;
-    background-color: #eee;
+}
+
+.myFilterForm {
+    position: relative;
+    top: 25%;
+    text-align: center;
+}
+
+.myFilterForm input {
+    margin-bottom: 5px;
 }
 
 .myData {
     width: 80%;
     height: 400px;
-    background-color: #eee;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.myData::-webkit-scrollbar {
+    display: none;
+}
+
+thead {
+    color: #2C061F;
 }
 
 .part2 {
@@ -274,7 +292,7 @@ a {
   margin-right: 10px;
 }
 
-#tsum-tabs label[for*='1']:before { content: '\2b'; }
+#tsum-tabs label[for*='1']:before { content: '\f3e0'; }
 #tsum-tabs label[for*='2']:before { content: '\f7d9'; }
 
 
