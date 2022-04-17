@@ -62,7 +62,7 @@
     <input id="tab1" type="radio" name="tabs" {{isset($id) ? "" : "checked"}}>
     <label for="tab1">Identifiant</label>
 
-    <input id="tab2" type="radio" name="tabs" {{isset($id) ? "checked" : ""}}>
+    <input id="tab2" type="radio" name="tabs" {{isset($id) ? "checked" : "disabled"}}>
     <label for="tab2">Gestion</label>
 
     <section id="content1">
@@ -105,16 +105,16 @@
                 @csrf
                 @method('put')
                 <div class="form-group0">
-                <input name="code1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->code : ''}}" placeholder="Code">
-                <input name="designation1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->designation : ''}}" placeholder="Designation">
+                <input id="code" name="code1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->code : ''}}" placeholder="Code">
+                <input id="designation" name="designation1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->designation : ''}}" placeholder="Designation">
                 </div>
                 <div class="form-groupSelect">
-                    <select name="status1" class="form-select" aria-label="Default select example" placeholder="text">
+                    <select id="status" name="status1" class="form-select" aria-label="Default select example" placeholder="text">
                         <option selected>Status</option>
                         <option value="Actif">Actif</option>
                         <option value="Inactif">Inactif</option>
                     </select>
-                    <select name="categorie1" class="form-select" aria-label="Default select example">
+                    <select id="categorie" name="categorie1" class="form-select" aria-label="Default select example">
                         <option selected>Categorie</option>
                         <option value="1">Test 1</option>
                         <option value="2">Test 2</option>
@@ -122,15 +122,37 @@
                     </select>
                 </div>
                 <div class="form-groupPrice">
-                    <input name="pv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pv : ''}}" placeholder="P.V.">
-                    <input name="pa1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pa : ''}}" placeholder="P.A.">
-                    <input name="uv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->uv : ''}}" placeholder="U.V.">
-                    <input name="ua1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->ua : ''}}" placeholder="U.A.">
+                    <input id="pv" name="pv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pv : ''}}" placeholder="P.V.">
+                    <input id="pa" name="pa1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pa : ''}}" placeholder="P.A.">
+                    <input id="uv" name="uv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->uv : ''}}" placeholder="U.V.">
+                    <input id="ua" name="ua1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->ua : ''}}" placeholder="U.A.">
                 </div>
-                <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
-                onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="float: left; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">MODIFIER</button>
-                <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
-                onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="float: right; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" class="btn btn-primary ed">VIDER</button>
+                <button 
+                    onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                    onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" 
+                    style="float: left; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" 
+                    type="submit" class="btn btn-primary ed">
+                    MODIFIER
+                </button>
+                <button 
+                    onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                    onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" 
+                    style="float: left; margin-left : 2px; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" 
+                    class="btn btn-primary ed" id="vider_btn" onclick="vider()"
+                    type="button">
+                    VIDER
+                </button>
+            </form>
+            <form action="{{isset($id) ? route('article.destroy', ['id' => $id]) : ''}}" method="post">
+                @csrf
+                @method('delete')
+                <button 
+                    onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                    onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" 
+                    style="float: right; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" 
+                    type="submit" class="btn btn-primary ed">
+                    SUPPRIMER
+                </button>
             </form>
         </div>
     </section>
