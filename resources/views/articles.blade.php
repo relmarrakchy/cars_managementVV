@@ -59,10 +59,10 @@
 
 @section('tabs')
     {{--if u wanna add an input / section, increment the id and add to the css file--}}
-    <input id="tab1" type="radio" name="tabs" checked>
+    <input id="tab1" type="radio" name="tabs" {{isset($id) ? "" : "checked"}}>
     <label for="tab1">Identifiant</label>
 
-    <input id="tab2" type="radio" name="tabs">
+    <input id="tab2" type="radio" name="tabs" {{isset($id) ? "checked" : ""}}>
     <label for="tab2">Gestion</label>
 
     <section id="content1">
@@ -101,7 +101,9 @@
 
     <section id="content2">
         <div class="myForm">
-            <form class="mine" action="" method="post">
+            <form class="mine" action="{{isset($id) ? route('article.update', ['id' => $id]) : ''}}" method="post">
+                @csrf
+                @method('put')
                 <div class="form-group0">
                 <input name="code1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->code : ''}}" placeholder="Code">
                 <input name="designation1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->designation : ''}}" placeholder="Designation">

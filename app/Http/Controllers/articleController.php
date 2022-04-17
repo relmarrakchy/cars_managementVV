@@ -84,7 +84,18 @@ class articleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $newData = $request->all();
+        $article = Article::findOrFail($id);
+        $article->code = $newData['code1'];
+        $article->designation = $newData['designation1'];
+        $article->status = $newData['status1'];
+        $article->categorie = $newData['categorie1'];
+        $article->pv = $newData['pv1'];
+        $article->pa = $newData['pa1'];
+        $article->uv = $newData['uv1'];
+        $article->ua = $newData['ua1'];
+        $article->save();
+        return redirect('/articles');
     }
 
     /**
