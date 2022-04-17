@@ -116,9 +116,9 @@
                     </select>
                     <select id="categorie" name="categorie1" class="form-select" aria-label="Default select example">
                         <option selected>Categorie</option>
-                        <option value="1">Test 1</option>
-                        <option value="2">Test 2</option>
-                        <option value="3">Test 3</option>
+                        <option value="Test 1">Test 1</option>
+                        <option value="Test 2">Test 2</option>
+                        <option value="Test 3">Test 3</option>
                     </select>
                 </div>
                 <div class="form-groupPrice">
