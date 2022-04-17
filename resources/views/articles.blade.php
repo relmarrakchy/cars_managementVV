@@ -9,10 +9,10 @@
 @endsection
 
 @section('filter-form')
-    <form>
+    <form class="mine">
         <div class="form-group0">
-            <input  type="text" class="form-control" placeholder="Code">
-            <input  type="text" class="form-control" placeholder="Designation">
+            <input type="text" class="form-control" placeholder="Code">
+            <input type="text" class="form-control" placeholder="Designation">
         </div>
         <div class="form-groupSelect">
             <select class="form-select" aria-label="Default select example" placeholder="text">
@@ -43,7 +43,16 @@
             </tr>
         </thead>
         <tbody>
-            
+            @foreach ($articles as $article)
+                <tr>
+                    <td> <a href="./article/{{$article->id}}"> {{$loop->index + 1}} </a>  </td>
+                    <td> {{$article->code}} </td>
+                    <td> {{$article->designation}} </td>
+                    <td> {{$article->status}} </td>
+                    <td> {{$article->categorie}} </td>
+                    <td> {{$article->pv}} </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection
@@ -58,18 +67,19 @@
 
     <section id="content1">
         <div class="myForm">
-            <form>
+            <form class="mine" action="{{route('article.store')}}" method="post">
+                @csrf
                 <div class="form-group0">
-                    <input  type="text" class="form-control" placeholder="Code">
-                    <input  type="text" class="form-control" placeholder="Designation">
+                    <input name="code" type="text" class="form-control" placeholder="Code">
+                    <input name="designation" type="text" class="form-control" placeholder="Designation">
                 </div>
                 <div class="form-groupSelect">
-                    <select class="form-select" aria-label="Default select example" placeholder="text">
+                    <select name="status" class="form-select" aria-label="Default select example" placeholder="text">
                         <option selected>Status</option>
                         <option value="Actif">Actif</option>
                         <option value="Inactif">Inactif</option>
                     </select>
-                    <select class="form-select" aria-label="Default select example">
+                    <select name="categorie" class="form-select" aria-label="Default select example">
                         <option selected>Categorie</option>
                         <option value="Test 1">Test 1</option>
                         <option value="Test 2">Test 2</option>
@@ -77,19 +87,20 @@
                     </select>
                 </div>
                 <div class="form-groupPrice">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.V.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.A.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.V.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.A.">
+                    <input name="pv" type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.V.">
+                    <input name="pu" type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.A.">
+                    <input name="uv" type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.V.">
+                    <input name="ua" type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.A.">
                 </div>
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">AJOUTER</button>
             </form>
         </div>
     </section>
 
     <section id="content2">
         <div class="myForm">
-            <form>
+            <form class="mine" action="" method="post">
                 <div class="form-group0">
                 <input  type="text" class="form-control" placeholder="Code">
                 <input  type="text" class="form-control" placeholder="Designation">
@@ -114,8 +125,10 @@
                     <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.V.">
                     <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.A.">
                 </div>
-                <button type="submit" class="btn btn-primary">Modifier</button>
-                <button class="btn btn-primary">Annuler</button>
+                <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="float: left; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">MODIFIER</button>
+                <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
+                onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="float: right; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" class="btn btn-primary ed">VIDER</button>
             </form>
         </div>
     </section>

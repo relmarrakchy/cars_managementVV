@@ -295,8 +295,6 @@ thead {
 #tsum-tabs label[for*='1']:before { content: '\f3e0'; }
 #tsum-tabs label[for*='2']:before { content: '\f7d9'; }
 
-
-
 #tsum-tabs label:hover {
   color: #888;
   cursor: pointer;
@@ -363,4 +361,25 @@ thead {
 .form-groupPrice input[type=text] {
     margin-right: 5px;
     width: 30%;
+}
+
+.mine input{
+    /* background-color: rgb(246, 244, 244); */
+    background-color: #F7F6FB;
+    border: none;
+}
+.mine select {
+    background-color: #F7F6FB;
+    border: none;
+
+}
+.mine select option{
+    background-color: #F7F6FB;
+    border: none;
+}
+
+#btt:hover {
+    color: #2C061F;
+    background-color: white;
+    border: 1px solid #2C061F;
 }

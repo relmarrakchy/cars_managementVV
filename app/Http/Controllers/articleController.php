@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class articleController extends Controller
@@ -13,7 +14,8 @@ class articleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        return view('articles', ['articles' => $articles]);
     }
 
     /**
@@ -23,7 +25,7 @@ class articleController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,17 @@ class articleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->code = request('code');
+        $article->designation = request('designation');
+        $article->status = request('status');
+        $article->categorie = request('categorie');
+        $article->pv = request('pv');
+        $article->pu = request('pu');
+        $article->uv = request('uv');
+        $article->ua = request('ua');
+        $article->save();
+        return redirect('/articles');
     }
 
     /**
@@ -56,7 +68,7 @@ class articleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $that_article = Article::findOrFail('$id');
     }
 
     /**

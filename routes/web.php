@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\articleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/articles', function () {
-    return view('articles');
-});
+Route::get('/', function () {return view('welcome');});
+Route::get('/article', [articleController::class, 'index']);
+Route::post('/article', [articleController::class, 'store'])->name('article.store');
