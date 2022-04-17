@@ -40,6 +40,9 @@
                 <th scope="col">Status</th>
                 <th scope="col">Categorie</th>
                 <th scope="col">P.V.</th>
+                <th scope="col">P.A.</th>
+                <th scope="col">U.V.</th>
+                <th scope="col">U.A.</th>
             </tr>
         </thead>
         <tbody>
@@ -51,6 +54,9 @@
                     <td> {{$article->status}} </td>
                     <td> {{$article->categorie}} </td>
                     <td> {{$article->pv}} </td>
+                    <td> {{$article->pa}} </td>
+                    <td> {{$article->uv}} </td>
+                    <td> {{$article->ua}} </td>
                 </tr>
             @endforeach
         </tbody>
@@ -110,15 +116,25 @@
                 </div>
                 <div class="form-groupSelect">
                     <select id="status" name="status1" class="form-select" aria-label="Default select example" placeholder="text">
-                        <option selected>Status</option>
-                        <option value="Actif">Actif</option>
-                        <option value="Inactif">Inactif</option>
+                        <option>Status</option>
+                        <option value="Actif" @if (isset($id) && $that_article->status == "Actif")
+                            seleted
+                        @endif>Actif</option>
+                        <option value="Inactif" @if (isset($id) && $that_article->status == "Inactif")
+                            selected
+                        @endif>Inactif</option>
                     </select>
                     <select id="categorie" name="categorie1" class="form-select" aria-label="Default select example">
-                        <option selected>Categorie</option>
-                        <option value="Test 1">Test 1</option>
-                        <option value="Test 2">Test 2</option>
-                        <option value="Test 3">Test 3</option>
+                        <option>Categorie</option>
+                        <option value="Test 1" @if (isset($id) && $that_article->categorie == "Test 1")
+                            selected
+                        @endif>Test 1</option>
+                        <option value="Test 2" @if (isset($id) && $that_article->categorie == "Test 2")
+                            selected
+                        @endif>Test 2</option>
+                        <option value="Test 3" @if (isset($id) && $that_article->categorie == "Test 3")
+                            selected
+                        @endif>Test 3</option>
                     </select>
                 </div>
                 <div class="form-groupPrice">
