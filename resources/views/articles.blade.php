@@ -45,7 +45,7 @@
         <tbody>
             @foreach ($articles as $article)
                 <tr>
-                    <td> <a href="./article/{{$article->id}}"> {{$loop->index + 1}} </a>  </td>
+                    <td> <a href="/articles/{{$article->id}}"> {{$loop->index + 1}} </a>  </td>
                     <td> {{$article->code}} </td>
                     <td> {{$article->designation}} </td>
                     <td> {{$article->status}} </td>
@@ -69,6 +69,7 @@
         <div class="myForm">
             <form class="mine" action="{{route('article.store')}}" method="post">
                 @csrf
+                @method('post')
                 <div class="form-group0">
                     <input name="code" type="text" class="form-control" placeholder="Code">
                     <input name="designation" type="text" class="form-control" placeholder="Designation">
@@ -87,10 +88,10 @@
                     </select>
                 </div>
                 <div class="form-groupPrice">
-                    <input name="pv" type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.V.">
-                    <input name="pu" type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.A.">
-                    <input name="uv" type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.V.">
-                    <input name="ua" type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.A.">
+                    <input name="pv" type="text" class="form-control"   placeholder="P.V.">
+                    <input name="pa" type="text" class="form-control"   placeholder="P.A.">
+                    <input name="uv" type="text" class="form-control"   placeholder="U.V.">
+                    <input name="ua" type="text" class="form-control"   placeholder="U.A.">
                 </div>
                 <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
                 onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">AJOUTER</button>
@@ -102,28 +103,27 @@
         <div class="myForm">
             <form class="mine" action="" method="post">
                 <div class="form-group0">
-                <input  type="text" class="form-control" placeholder="Code">
-                <input  type="text" class="form-control" placeholder="Designation">
+                <input name="code1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->code : ''}}" placeholder="Code">
+                <input name="designation1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->designation : ''}}" placeholder="Designation">
                 </div>
                 <div class="form-groupSelect">
-                    <select class="form-select" aria-label="Default select example" placeholder="text">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select name="status1" class="form-select" aria-label="Default select example" placeholder="text">
+                        <option selected>Status</option>
+                        <option value="Actif">Actif</option>
+                        <option value="Inactif">Inactif</option>
                     </select>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select name="categorie1" class="form-select" aria-label="Default select example">
+                        <option selected>Categorie</option>
+                        <option value="1">Test 1</option>
+                        <option value="2">Test 2</option>
+                        <option value="3">Test 3</option>
                     </select>
                 </div>
                 <div class="form-groupPrice">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.V.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="P.A.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.V.">
-                    <input  type="text" class="form-control" id="exampleInputEmail1"  placeholder="U.A.">
+                    <input name="pv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pv : ''}}" placeholder="P.V.">
+                    <input name="pa1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->pa : ''}}" placeholder="P.A.">
+                    <input name="uv1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->uv : ''}}" placeholder="U.V.">
+                    <input name="ua1" type="text" class="form-control" value="{{(isset($id)) ? $that_article->ua : ''}}" placeholder="U.A.">
                 </div>
                 <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
                 onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="float: left; color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">MODIFIER</button>

@@ -24,8 +24,8 @@
                     </a>
                     <div class="nav_list"> 
                         {{--active--}}
-                        <a href="./" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a> 
-                        <a href="./articles" class="nav_link @yield('articles')"> <i class='bx bxs-cart nav_icon'></i> <span class="nav_name">Articles</span> </a> 
+                        <a href="/" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a> 
+                        <a href="/articles" class="nav_link @yield('articles')"> <i class='bx bxs-cart nav_icon'></i> <span class="nav_name">Articles</span> </a> 
                         <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i><span class="nav_name">Clients</span> </a> 
                         <a href="#" class="nav_link"> <i class='bx bx-store nav_icon'></i> <span class="nav_name">Fournisseurs</span> </a>  
                     </div>

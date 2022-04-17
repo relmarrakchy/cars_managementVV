@@ -12,9 +12,13 @@ class articleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = null)
     {
         $articles = Article::all();
+        if ($id != null) {
+            $that_article = Article::findOrFail($id);
+            return view('articles', ['articles' => $articles, 'that_article' => $that_article, 'id' => $id]);
+        }
         return view('articles', ['articles' => $articles]);
     }
 
@@ -42,7 +46,7 @@ class articleController extends Controller
         $article->status = request('status');
         $article->categorie = request('categorie');
         $article->pv = request('pv');
-        $article->pu = request('pu');
+        $article->pa = request('pa');
         $article->uv = request('uv');
         $article->ua = request('ua');
         $article->save();
@@ -57,7 +61,7 @@ class articleController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +72,7 @@ class articleController extends Controller
      */
     public function edit($id)
     {
-        $that_article = Article::findOrFail('$id');
+        
     }
 
     /**

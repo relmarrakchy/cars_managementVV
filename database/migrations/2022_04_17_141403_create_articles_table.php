@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('categorie');
             $table->double('pv');
-            $table->double('pu');
+            $table->double('pa');
             $table->double('uv');
             $table->double('ua');
             $table->timestamps();

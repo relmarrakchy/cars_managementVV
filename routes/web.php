@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {return view('welcome');});
-Route::get('/article', [articleController::class, 'index']);
-Route::post('/article', [articleController::class, 'store'])->name('article.store');
+Route::get('/articles/{id?}', [articleController::class, 'index']);
+Route::post('/articles/{id?}', [articleController::class, 'store'])->name('article.store');
