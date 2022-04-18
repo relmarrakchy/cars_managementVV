@@ -51,7 +51,7 @@
                     <td> <a href="/articles/{{$article->id}}"> {{$loop->index + 1}} </a>  </td>
                     <td> {{$article->code}} </td>
                     <td> {{$article->designation}} </td>
-                    <td> {{$article->status}} </td>
+                    <td id="status"> {{$article->status}} </td>
                     <td> {{$article->categorie}} </td>
                     <td> {{$article->pv}} </td>
                     <td> {{$article->pa}} </td>
@@ -64,7 +64,6 @@
 @endsection
 
 @section('tabs')
-    {{--if u wanna add an input / section, increment the id and add to the css file--}}
     <input id="tab1" type="radio" name="tabs" {{isset($id) ? "" : "checked"}}>
     <label for="tab1">Identifiant</label>
 
@@ -118,7 +117,7 @@
                     <select id="status" name="status1" class="form-select" aria-label="Default select example" placeholder="text">
                         <option>Status</option>
                         <option value="Actif" @if (isset($id) && $that_article->status == "Actif")
-                            seleted
+                            selected
                         @endif>Actif</option>
                         <option value="Inactif" @if (isset($id) && $that_article->status == "Inactif")
                             selected
@@ -172,4 +171,8 @@
             </form>
         </div>
     </section>
+@endsection
+
+@section('jsFiles')
+    <script src="/js/articles.js"></script>
 @endsection

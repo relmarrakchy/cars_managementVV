@@ -56,5 +56,5 @@ function openPage(pageName) {
 document.getElementById("defaultOpen").click();
 
 function vider() {
-  window.location.pathname = "/articles"
+  window.location.pathname = "/article";
 }
