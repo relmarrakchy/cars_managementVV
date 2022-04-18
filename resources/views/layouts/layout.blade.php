@@ -20,7 +20,7 @@
             <nav class="nav">
                 <div> 
                     <a href="#" class="nav_logo"> 
-                        <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name eEduction">XuRan</span>
+                        <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name eEduction">XManager</span>
                     </a>
                     <div class="nav_list"> 
                         {{--active--}}

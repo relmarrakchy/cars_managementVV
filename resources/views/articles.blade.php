@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title/addFile')
-    <title>XuRen - Articles</title>
+    <title>XManager - Articles</title>
 @endsection
 
 @section('articles')
@@ -100,6 +100,8 @@
                 </div>
                 <button onMouseOver="this.style.color='#2C061F' ; this.style.background='white'; this.style.borderColor='#2C061F'"
                 onMouseOut="this.style.color='white' ; this.style.background='#2C061F'" style="color: white; background: #2C061F; transition-duration: 0.4s; border: solid #2C061F ;" type="submit" class="btn btn-primary ed">AJOUTER</button>
+                <br>
+                {{session('msg')}}
             </form>
         </div>
     </section>
@@ -174,5 +176,12 @@
 @endsection
 
 @section('jsFiles')
-    <script src="/js/articles.js"></script>
+    <script>
+        let e = document.querySelector('#status')
+        for (let index = 0; index < e.length; index++) {
+            if (e.value == "Actif") {
+                e.style.color = "green"
+            }
+        }
+    </script>
 @endsection

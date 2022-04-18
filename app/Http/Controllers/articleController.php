@@ -39,18 +39,22 @@ class articleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $article = new Article();
-        $article->code = request('code');
-        $article->designation = request('designation');
-        $article->status = request('status');
-        $article->categorie = request('categorie');
-        $article->pv = request('pv');
-        $article->pa = request('pa');
-        $article->uv = request('uv');
-        $article->ua = request('ua');
-        $article->save();
-        return redirect('/articles');
+    { 
+        try {
+            $article = new Article();
+            $article->code = request('code');
+            $article->designation = request('designation');
+            $article->status = request('status');
+            $article->categorie = request('categorie');
+            $article->pv = request('pv');
+            $article->pa = request('pa');
+            $article->uv = request('uv');
+            $article->ua = request('ua');
+            $article->save();
+            return redirect('/articles');
+        } catch (\Throwable $th) {
+            return redirect('/articles')->with('msg', "Some fields are empty !");
+        }
     }
 
     /**
